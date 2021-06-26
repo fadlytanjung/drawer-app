@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Drawer Js</title>
+  <script src="lib/jquery-3.4.1.min.js"></script>
+  <script src="lib/jquery-migrate-1.2.1.min.js"></script>
+
+  <link rel="stylesheet" href="assets/bootstrap.min.css" />
+  <link href="assets/font-awesome.min.css" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+  <link rel="stylesheet" href="dist/drawerJs.css" />
+  <script src="dist/drawerJs.standalone.js"></script>
+  <style>
+    #canvas-editor {
+      margin-top: 100px;
+      margin-left: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Click Drawer below</h1>
+  <div id="canvas-editor"></div>
+  <script>
+    $(document).ready(function () {
+        var drawerPlugins = [
+          // Drawing tools
+          'Pencil',
+          'Eraser',
+          'Text',
+          'Line',
+          'ArrowOneSide',
+          'ArrowTwoSide',
+          'Triangle',
+          'Rectangle',
+          'Circle',
+          'Image',
+          'BackgroundImage',
+          'Polygon',
+          'ImageCrop',
+
+          // Drawing options
+          //'ColorHtml5',
+          'Color',
+          'ShapeBorder',
+          'BrushSize',
+          'OpacityOption',
+
+          'LineWidth',
+          'StrokeWidth',
+
+          'Resize',
+          'ShapeContextMenu',
+          'CloseButton',
+          'OvercanvasPopup',
+          'OpenPopupButton',
+          'MinimizeButton',
+          'ToggleVisibilityButton',
+          'MovableFloatingMode',
+          'FullscreenModeButton',
+
+          'TextLineHeight',
+          'TextAlign',
+
+          'TextFontFamily',
+          'TextFontSize',
+          'TextFontWeight',
+          'TextFontStyle',
+          'TextDecoration',
+          'TextColor',
+          'TextBackgroundColor'
+        ];
+      var canvas = new DrawerJs.Drawer(null, {
+        plugins: [
+          'Rectangle',
+          'Circle',
+          'Triangle',
+          'Line',
+          'Color',
+          'ShapeBorder',
+          'ArrowOneSide',
+          'Pencil',
+
+          //text plugins
+          'Text',
+          'TextLineHeight',
+          'TextAlign',
+          'TextFontFamily',
+          'TextFontSize',
+          'TextFontWeight',
+          'TextFontStyle',
+          'TextDecoration',
+          'TextColor',
+          'TextBackgroundColor'
+        ],
+        pluginsConfig: {
+          Rectangle: {
+            centeringMode: 'normal'
+          },
+          Triangle: {
+            centeringMode: 'normal'
+          },
+          Circle: {
+            centeringMode: 'normal'
+          },
+          'Pencil': {
+            cursorUrl: 'pencil',
+            brushSize: 3
+          },
+          'Text': {
+            fonts: {
+              'Georgia': 'Georgia, serif',
+              'Palatino': "'Palatino Linotype', 'Book Antiqua', Palatino, serif",
+              'Times New Roman': "'Times New Roman', Times, serif",
+              'Arial': 'Arial, Helvetica, sans-serif',
+              'Arial Black': "'Arial Black', Gadget, sans-serif",
+              'Comic Sans MS': "'Comic Sans MS', cursive, sans-serif",
+              'Impact': 'Impact, Charcoal, sans-serif',
+              'Lucida Grande': "'Lucida Sans Unicode', 'Lucida Grande', sans-serif",
+              'Tahoma': 'Tahoma, Geneva, sans-serif',
+              'Trebuchet MS': "'Trebuchet MS', Helvetica, sans-serif",
+              'Verdana': 'Verdana, Geneva, sans-serif',
+              'Courier New': "'Courier New', Courier, monospace",
+              'Lucida Console': "'Lucida Console', Monaco, monospace"
+            },
+            defaultFont: 'Palatino',
+            editIconMode: true,
+            editIconSize: 'medium',
+            defaultValues: {
+              fontSize: 12,
+            },
+            predefined: {
+              fontSize: [8, 12, 14, 16, 32, 40, 72],
+              lineHeight: [1, 2, 3, 4, 6]
+            }
+          }
+        },
+        defaultImageUrl: 'assets/drawer.jpg',
+        defaultActivePlugin: { name: 'Rectangle', mode: 'lastUsed' },
+        debug: true,
+        // drawer config section here
+        activeColor: '#19A6FD' // default drawing color
+      }, 600, 600); // height and width of drawer will be 600x600
+
+      $('#canvas-editor').append(canvas.getHtml());
+      canvas.onInsert();
+    });
+  </script> 
+</body>
+
+</html>
